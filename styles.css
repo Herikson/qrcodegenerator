@@ -1,0 +1,130 @@
+:root {
+  --bg: #0b0f14;
+  --panel: #121821;
+  --text: #e6edf3;
+  --muted: #9aa7b2;
+  --primary: #2f6feb;
+  --primary-contrast: #ffffff;
+  --border: #1f2a36;
+  --focus: #69a7ff;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 10% 10%, #0e141b 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+.header p {
+  margin: 6px 0 20px;
+  color: var(--muted);
+}
+.controls {
+  background: linear-gradient(180deg, #121821 0%, #0f141c 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.field span {
+  font-size: 12px;
+  color: var(--muted);
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0c1117;
+  color: var(--text);
+  outline: none;
+}
+input[type="text"]::placeholder {
+  color: #6b7785;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.range {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+input[type="range"] {
+  width: 100%;
+}
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0c1117;
+  color: var(--text);
+  outline: none;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+button {
+  border: 1px solid var(--border);
+  background: #0c1117;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.primary {
+  background: linear-gradient(180deg, #2f6feb 0%, #295fd1 100%);
+  border-color: #204a9d;
+  color: var(--primary-contrast);
+}
+.primary:focus {
+  box-shadow: 0 0 0 3px rgba(105,167,255,0.45);
+}
+.preview {
+  margin-top: 16px;
+  display: grid;
+  place-items: center;
+}
+.canvasWrap {
+  background: #0c1117;
+  border: 1px dashed #203045;
+  border-radius: 14px;
+  padding: 18px;
+}
+canvas {
+  display: block;
+}
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

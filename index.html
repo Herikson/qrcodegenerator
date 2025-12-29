@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>QR Code Generator</h1>
+      <p>Enter text and download the QR image.</p>
+    </header>
+    <section class="controls">
+      <label class="field">
+        <span>Text</span>
+        <input id="textInput" type="text" placeholder="Type text or URL" autocomplete="off">
+      </label>
+      <div class="grid">
+        <label class="field">
+          <span>Size</span>
+          <div class="range">
+            <input id="sizeInput" type="range" min="128" max="1024" step="32" value="256">
+            <output id="sizeValue">256 px</output>
+          </div>
+        </label>
+        <label class="field">
+          <span>Margin</span>
+          <div class="range">
+            <input id="marginInput" type="range" min="0" max="10" step="1" value="2">
+            <output id="marginValue">2</output>
+          </div>
+        </label>
+        <label class="field">
+          <span>Error Correction</span>
+          <select id="eclSelect">
+            <option value="L">L</option>
+            <option value="M" selected>M</option>
+            <option value="Q">Q</option>
+            <option value="H">H</option>
+          </select>
+        </label>
+      </div>
+      <div class="actions">
+        <button id="generateBtn" class="primary">Generate</button>
+        <button id="downloadBtn" disabled>Download PNG</button>
+        <button id="copyBtn" disabled>Copy Image</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+    </section>
+    <section class="preview">
+      <div class="canvasWrap">
+        <canvas id="qrCanvas" width="256" height="256"></canvas>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
