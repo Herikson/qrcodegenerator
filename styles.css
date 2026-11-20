@@ -49,8 +49,11 @@ body {
   font-size: 12px;
   color: var(--muted);
 }
-input[type="text"] {
+input[type="text"],
+textarea {
   width: 100%;
+  font: inherit;
+  resize: vertical;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -58,7 +61,8 @@ input[type="text"] {
   color: var(--text);
   outline: none;
 }
-input[type="text"]::placeholder {
+input[type="text"]::placeholder,
+textarea::placeholder {
   color: #6b7785;
 }
 .grid {
@@ -122,7 +126,67 @@ button[disabled] {
 }
 canvas {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
+.canvasWrap {
+  max-width: 100%;
+}
+.controls + .controls {
+  margin-top: 16px;
+}
+.controls h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+.dropZone:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.dropZone {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border: 2px dashed #2a3a50;
+  border-radius: 12px;
+  background: #0c1117;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.dropZone:hover,
+.dropZone.dragging {
+  border-color: var(--primary);
+  background: #0f1724;
+}
+.dropZone strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.dropZone span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.uploadPreview {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.status {
+  min-height: 1.2em;
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.status[data-type="error"] { color: #ff7b72; }
+.status[data-type="success"] { color: #3fb950; }
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;

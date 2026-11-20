@@ -10,12 +10,27 @@
   <main class="container">
     <header class="header">
       <h1>QR Code Generator</h1>
-      <p>Enter text and download the QR image.</p>
+      <p>Enter text, or upload an existing QR code to read, edit and regenerate it.</p>
     </header>
-    <section class="controls">
+
+    <section class="controls upload" aria-labelledby="uploadTitle">
+      <h2 id="uploadTitle">Read a QR code</h2>
+      <div id="dropZone" class="dropZone" role="button" tabindex="0"
+           aria-describedby="dropHint">
+        <img id="uploadPreview" class="uploadPreview" alt="Uploaded image" hidden>
+        <div>
+          <strong>Upload an image</strong>
+          <span id="dropHint">Click, drag &amp; drop, or paste (Ctrl+V) an image containing a QR code.</span>
+        </div>
+      </div>
+      <input id="fileInput" type="file" accept="image/*" hidden>
+    </section>
+
+    <section class="controls" aria-labelledby="genTitle">
+      <h2 id="genTitle">Generate</h2>
       <label class="field">
         <span>Text</span>
-        <input id="textInput" type="text" placeholder="Type text or URL" autocomplete="off">
+        <textarea id="textInput" rows="3" placeholder="Type text or URL" autocomplete="off"></textarea>
       </label>
       <div class="grid">
         <label class="field">
@@ -35,10 +50,10 @@
         <label class="field">
           <span>Error Correction</span>
           <select id="eclSelect">
-            <option value="L">L</option>
-            <option value="M" selected>M</option>
-            <option value="Q">Q</option>
-            <option value="H">H</option>
+            <option value="L">L (7%)</option>
+            <option value="M" selected>M (15%)</option>
+            <option value="Q">Q (25%)</option>
+            <option value="H">H (30%)</option>
           </select>
         </label>
       </div>
@@ -48,10 +63,12 @@
         <button id="copyBtn" disabled>Copy Image</button>
         <button id="clearBtn">Clear</button>
       </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
     </section>
+
     <section class="preview">
       <div class="canvasWrap">
-        <canvas id="qrCanvas" width="256" height="256"></canvas>
+        <canvas id="qrCanvas" width="256" height="256" role="img" aria-label="No QR code generated"></canvas>
       </div>
     </section>
   </main>
